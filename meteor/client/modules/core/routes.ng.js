@@ -386,5 +386,5 @@ angular.module("app.core").config(function ($breadcrumbProvider, $urlRouterProvi
       }
     });
   // SHOULD GO TO 404
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/dashboard");
 });
