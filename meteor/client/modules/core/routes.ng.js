@@ -13,8 +13,8 @@ angular.module("app.core").run(function ($rootScope, $state, $window ) {
         // Sets page title
         setTitle: function(title) {
             this.title = title ;
-        },
-  }
+        }
+  };
 
   // Change Title on stateChangeSuccess
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -64,6 +64,7 @@ angular.module("app.core").config(function ($breadcrumbProvider, $urlRouterProvi
      templateUrl: 'client/modules/core/directives/breadcrumbs.ng.html'
    });
 
+  $urlRouterProvider.when('/dashboard', '/dashboard/home');
   $stateProvider
     .state('core', {
       templateUrl: 'client/modules/core/views/core.ng.html',
@@ -72,25 +73,26 @@ angular.module("app.core").config(function ($breadcrumbProvider, $urlRouterProvi
         label: 'Home'
       }
     })
-    .state('core.home', {
-      url: '/',
-      templateUrl: 'client/modules/core/views/home.ng.html',
-      ncyBreadcrumb: {
-        skip:true, //skip breadcrumb creation (no Home / Home )
-        label: 'Welcome!' // display Page title still
-      },
-      //controller: 'LoginCtrl',
-    })
-    .state('core.documentation', {
-      url: '/documentation',
-      templateUrl: 'client/modules/documentation/views/documentation.ng.html',
-      ncyBreadcrumb: {
-        label: 'Documentation' // display Page title still
-      },
-      controller: 'DocumentationCtrl',
-    })
+    // .state('core.home', {
+    //   url: '/',
+    //   templateUrl: 'client/modules/core/views/home.ng.html',
+    //   ncyBreadcrumb: {
+    //     skip:true, //skip breadcrumb creation (no Home / Home )
+    //     label: 'Welcome!' // display Page title still
+    //   },
+    //   //controller: 'LoginCtrl',
+    // })
+    // .state('core.documentation', {
+    //   url: '/documentation',
+    //   templateUrl: 'client/modules/documentation/views/documentation.ng.html',
+    //   ncyBreadcrumb: {
+    //     label: 'Documentation' // display Page title still
+    //   },
+    //   controller: 'DocumentationCtrl',
+    // })
     // DASHBOARD /////// /////// //////// //////////
-    .state('core.dashboard', {
+        .state('core.dashboard', {
+            abstract: true,
       url: '/dashboard',
       templateUrl: 'client/modules/dashboard/views/dashboard.ng.html',
       controller: 'DashboardCtrl',
