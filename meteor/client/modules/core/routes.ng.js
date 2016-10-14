@@ -58,6 +58,9 @@ angular.module("app.core")
 angular.module("app.core").config(function ($breadcrumbProvider, $urlRouterProvider, $stateProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
+
+  $urlRouterProvider.when('/dashboard', '/dashboard/home');
+
   // Set Breadcrumb Directive template
   $breadcrumbProvider.setOptions({
      //template: 'bootstrap2'
@@ -91,8 +94,8 @@ angular.module("app.core").config(function ($breadcrumbProvider, $urlRouterProvi
     //   controller: 'DocumentationCtrl',
     // })
     // DASHBOARD /////// /////// //////// //////////
-        .state('core.dashboard', {
-            abstract: true,
+    .state('core.dashboard', {
+      abstract: true,
       url: '/dashboard',
       templateUrl: 'client/modules/dashboard/views/dashboard.ng.html',
       controller: 'DashboardCtrl',
